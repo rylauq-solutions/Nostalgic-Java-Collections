@@ -14,9 +14,6 @@ public class ShirtDao {
 	private List<Shirt> allShirts = new ArrayList<Shirt>();
 	private Set<String> allBrands = new HashSet<String>();
 	private Set<Integer> allSizes = new HashSet<Integer>();
-	private Map<String, Integer> countOfBrands = new HashMap<String, Integer>();
-	private Map<Integer, Integer> countOfSize = new HashMap<Integer, Integer>();
-	private Map<String, Integer> countOfColor = new HashMap<String, Integer>();
 
 	public void addShirt(Shirt shirt) {
 		allShirts.add(shirt);
@@ -134,6 +131,7 @@ public class ShirtDao {
 	}
 
 	public void numberOfShirtsOfEachBrand() {
+		Map<String, Integer> countOfBrands = new HashMap<String, Integer>();
 		int count = 0;
 		for (Shirt x : allShirts) {
 			if (!countOfBrands.containsKey(x.getBrand())) {
@@ -151,6 +149,7 @@ public class ShirtDao {
 	}
 
 	public void numberOfShirtsOfEachSize() {
+		Map<Integer, Integer> countOfSize = new HashMap<Integer, Integer>();
 		int count = 0;
 		for (Shirt x : allShirts) {
 			if (!countOfSize.containsKey(x.getSize()))
@@ -169,20 +168,20 @@ public class ShirtDao {
 	}
 
 	public void numberOfShirtsOfEachColor() {
-		int count = 0;
-		Iterator<Shirt> itr = allShirts.iterator();
-		while (itr.hasNext()) {
-			Shirt s1 = itr.next();
-			if (!countOfColor.containsKey(s1.getColor()))
+		Map<String, Integer> countOfColor = new HashMap<>();
+
+		for (Shirt s1 : allShirts) {
+			if (!countOfColor.containsKey(s1.getColor())) {
 				countOfColor.put(s1.getColor(), 1);
-			else
-				countOfBrands.put(s1.getColor(), countOfColor.get(s1.getColor()) + 1);
-			count++;
+			} else {
+				countOfColor.put(s1.getColor(), countOfColor.get(s1.getColor()) + 1);
+			}
 		}
 
 		for (Map.Entry<String, Integer> mp : countOfColor.entrySet()) {
 			System.out.println(mp.getValue() + " shirt(s) is/are of " + mp.getKey() + " color.");
 		}
-		System.out.println("Total Shirts are: " + count);
+
+		System.out.println("Total Shirts are: " + allShirts.size());
 	}
 }
