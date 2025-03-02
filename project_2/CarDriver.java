@@ -26,7 +26,7 @@ public class CarDriver {
 
 		while (true) {
 			System.out.println(
-					"1.Insert Car Details\n2.Display All Cars\n3.Display All Tata Cars\n4.Display All Maruti Cars With Price <= 800000\n5.All Cars With Price <= 600000\n6.White Tata Cars With MfgYear >= 2015\n7.Sort Cars By Price Low to High\n8.Sort Cars By Price High to Low\n9.Sort Cars By Mfg Year New to Old");
+					"1.Insert Car Details\n2.Display All Cars\n3.Display All Tata Cars\n4.Display All Maruti Cars With Price <= 800000\n5.All Cars With Price <= 600000\n6.White Tata Cars With MfgYear >= 2015\n7.Sort Cars By Price Low to High\n8.Sort Cars By Price High to Low\n9.Sort Cars By Mfg Year New to Old\n10.Get All Car Brands\n11.Get Number of Cars of Each Brand\n12.Get Number of Cars from Each Mfg Year\n13.Get Number of Cars from Each Color");
 			System.out.print("Enter Choice: ");
 			int choice = sc.nextInt();
 			System.out.println();
@@ -87,7 +87,30 @@ public class CarDriver {
 				System.out.println("=========================\n");
 			}
 				break;
-
+			case 10: {
+				System.out.println("=========================");
+				dao.getAllCarBrands();
+				System.out.println("=========================\n");
+			}
+				break;
+			case 11: {
+				System.out.println("=========================");
+				dao.getCountOfCarsOfEachBrand();
+				System.out.println("=========================\n");
+			}
+				break;
+			case 12: {
+				System.out.println("=========================");
+				dao.getCountOfCarsOfEachMfgYear();
+				System.out.println("=========================\n");
+			}
+				break;
+			case 13: {
+				System.out.println("=========================");
+				dao.getCountOfCarsOfEachColor();
+				System.out.println("=========================\n");
+			}
+				break;
 			default: {
 				System.out.println("=========================");
 				System.out.println("Invalid Input :( Try Again!!!");

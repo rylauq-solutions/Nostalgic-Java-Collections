@@ -123,4 +123,62 @@ public class CarDao {
 		}
 		System.out.println("Total number of Cars are: " + count);
 	}
+
+	public void getAllCarBrands() {
+		for (Car x : carList) {
+			if (!carBrandsSet.contains(x.getBrand())) {
+				carBrandsSet.add(x.getBrand());
+			}
+		}
+		int count = 0;
+		System.out.println("All Car Brands available:");
+		for (String x : carBrandsSet) {
+			System.out.println(x);
+			count++;
+		}
+		System.out.println("Number of Car brands are: " + count);
+	}
+
+	public void getCountOfCarsOfEachBrand() {
+		Map<String, Integer> countOfCarsOfEachBrand = new HashMap<String, Integer>();
+		for (Car x : carList) {
+			if (!countOfCarsOfEachBrand.containsKey(x.getBrand())) {
+				countOfCarsOfEachBrand.put(x.getBrand(), 1);
+			} else {
+				countOfCarsOfEachBrand.put(x.getBrand(), countOfCarsOfEachBrand.get(x.getBrand()) + 1);
+			}
+		}
+		for (Map.Entry<String, Integer> itr : countOfCarsOfEachBrand.entrySet()) {
+			System.out.println(itr.getValue() + " car(s) is/are of " + itr.getKey() + " brand.");
+		}
+	}
+
+	public void getCountOfCarsOfEachMfgYear() {
+		Map<Integer, Integer> countOfCarsOfEachMfgYear = new HashMap<Integer, Integer>();
+		for (Car x : carList) {
+			if (!countOfCarsOfEachMfgYear.containsKey(x.getMfgYear())) {
+				countOfCarsOfEachMfgYear.put(x.getMfgYear(), 1);
+			} else {
+				countOfCarsOfEachMfgYear.put(x.getMfgYear(), countOfCarsOfEachMfgYear.get(x.getMfgYear()) + 1);
+			}
+		}
+		for (Map.Entry<Integer, Integer> itr : countOfCarsOfEachMfgYear.entrySet()) {
+			System.out.println(itr.getValue() + " car(s) was/were manufactured in " + itr.getKey());
+		}
+	}
+
+	public void getCountOfCarsOfEachColor() {
+		Map<String, Integer> countOfCarsOfEachColor = new HashMap<String, Integer>();
+		for (Car x : carList) {
+			if (!countOfCarsOfEachColor.containsKey(x.getColor())) {
+				countOfCarsOfEachColor.put(x.getColor(), 1);
+			} else {
+				countOfCarsOfEachColor.put(x.getColor(), countOfCarsOfEachColor.get(x.getColor()) + 1);
+			}
+		}
+		for (Map.Entry<String, Integer> itr : countOfCarsOfEachColor.entrySet()) {
+			System.out.println(itr.getValue() + " car(s) is/are of " + itr.getKey() + " color");
+		}
+	}
+
 }
